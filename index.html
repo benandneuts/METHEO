@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MéThéo</title><!--TITRE ONGLET-->
+	<link rel="stylesheet" type="text/css" href="asset/css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+	<div id="title" class="title">
+		<span class=""></span>
+		<h1>METHEO</h1><!--TITRE-->
+		<p class="bottom">prévisions - météos</p><!--SOUS-TITRE-->
+	</div>
+	<div class="carte">
+		<div id="front" class="front oright active">
+			<div class="top">
+				<div class="localisation">
+					<span id="ville"></span>
+					<i id="rechercheInput" class="fas fa-search recherche" onclick="search()"></i><!--Bouton pour amener page de recherche-->
+				</div>
+				<div class="more">
+					<i class="fas fa-plus-circle take" onclick="precisions()"></i>
+				</div>
+			</div>
+			<div class="weather">
+				<img id="condnow" src="asset/images/sun.jpg" class="conditions"/><!--Si pas de Connexion mets image Soleil-->
+				<h1>
+					<span id="tempnow"></span><!--Température actuelle-->
+					<br>
+					<span class="inter">Aujourd'hui</span>
+					<br>
+					<span id="timenow" class="ajd"></span><!--Heure actuelle-->
+				</h1>
+			</div>
+			<ul class="sup">
+				<li onclick="demain(); detect()" id="demain"><!--liste pour afficher les conditions de demain-->
+					<img id="cond1" src="asset/images/cloudy_sky.png" class="lilconditions"/><!--Si pas de Connexion mets image Nuageux-->
+					<div class="jour">Demain</div>
+					<div id="temp1" class="tempday">T°</div>
+				</li>
+				<li onclick="apresdemain(); detect()" id="apresdemain"><!--liste pour après demain-->
+					<img id="cond2" src="asset/images/cloudy_sky.png" class="lilconditions"/><!--Si pas de Connexion mets image Nuageux-->
+					<div id="jourapres" class="jour">Après demain</div>
+					<div id="temp2" class="tempday">T°</div>
+				</li class="plus">
+				<li onclick="joursuivant(); detect()" id="joursuivant"><!--liste pour le jour suivant-->
+					<img id="cond3" src="asset/images/cloudy_sky.png" class="lilconditions"/><!--Si pas de Connexion mets image Nuageux-->
+					<div id="joursuiv" class="jour">Jour suivant</div>
+					<div id="temp3" class="tempday">T°</div>
+				</li>
+			</ul>
+		</div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+		<div id="backright" class="back1 unactive">
+			<div class="top">
+				<div id="daynow" class="localisation"></div>
+				<div class="go-back" onclick="deleteprecisions()"><!--Quand on appuie sur la flèche retour, appeler la fonction supprimer les précisions-->
+				<i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div><!--Fonction pour obtenir la fleche vers la gauche-->
+			</div>
+			<div class="weather">
+				<img id="condajd" src="asset/images/sun.jpg" class="conditions"/>
+				<h1>
+					<span id="tempajd" class="temperature"></span>
+					<br>
+					<span id="cond" class="inter"></span>
+					<br>
+					<span class="change arrowleft"><i class="fa fa-chevron-circle-left"></i></span><!--Fonction pour obtenir la fleche vers la gauche-->
+					<span class="heure ajd"></span><!--Fonction pour obtenir l'heure d'aujourd'hui-->
+					<span class="change arrowright"><i class="fa fa-chevron-circle-right"></i></span><!--Fonction pour obtenir la fleche vers la droite-->
+				</h1>
+			</div>
+			<ul class="sup">
+				<li>
+					<div class="jour">
+						<span style="padding: 0 10px 0 0;">Vent</span><!--Précisions météo-->
+						<span><i id="flechevent" class="fas fa-long-arrow-alt-down"></i></span><!--Fonction pour obtenir la flèche dans la direction du vent-->
+					</div>
+					<div id="vent" class="tempday"></div>
+				</li>
+				<li>
+					<div class="jour">Rafales</div>
+					<div id="rafalesday" class="tempday"></div><!--Force des rafales-->
+				</li>
+				<li>
+					<div class="sun">
+					<span class="ajd">
+						<i style="padding-right: 5px;" class="fas fa-long-arrow-alt-down"></i><span id="Tmin"></span>
+						<span> - </span>
+						<span id="Tmax"></span><i style="padding-left: 5px;" class="fas fa-long-arrow-alt-up"></i>
+					</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+		<div id="backleft" class="back2 unactive2">
+			<div class="top">
+				<div id="dayleft" class="localisation"></div>
+				<div class="go-back" onclick="deleteprecisions()">
+				<i class=" fa fa-chevron-circle-left" aria-hidden="true"></i></div>
+			</div>
+			<div class="weather">
+				<img id="conditions2" src="asset/images/sun.jpg" class="conditions"/>
+				<h1>
+					<span id="templeft"></span><!--Température des jours suivants-->
+					<br>
+					<span id="condleft" class="inter"></span><!--Conditions des jours suivants-->
+					<br>
+					<span class="change arrowleft"><i class="fa fa-chevron-circle-left"></i></span>
+					<span class="heure ajd"></span>
+					<span class="change arrowright"><i class="fa fa-chevron-circle-right"></i></span>
+				</h1>
+			</div>
+			<ul class="sup">
+				<li>
+					<div class="jour">
+						<span style="padding: 0 10px 0 0;">Vent</span>
+						<span class="temp"><i id="flechevent2" class="fas fa-long-arrow-alt-down"></i></span>
+					</div>
+					<div id="vent2" class="tempday"></div>
+				</li>
+				<li>
+					<div class="jour">Rafales</div>
+					<div id="rafalesleft" class="tempday"></div>
+				</li>
+				<li>
+					<div class="sun">
+					<span class="ajd">
+							<i style="padding-right: 5px;" class="fas fa-long-arrow-alt-down"></i><span id="Tmin2"></span>
+							<span> - </span>
+							<span id="Tmax2"></span><i style="padding-left: 5px;" class="fas fa-long-arrow-alt-up"></i>
+						</span>
+					</div>
+
+				</li>
+			</ul>
+		</div>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+		<div id="search" class="search unactive3">
+            <div class="top" style="height: 5%;">
+                <div id="dayleft" class="localisation"></div>
+                <div class="go-back" onclick="deleteprecisions()"><!--Appeler la fonction Supprimer les précisions sur les conditions-->
+                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div>
+            </div>
+            <div class="weather" style="height: 15%;">
+                <h1>
+                    <div class="int">
+                        <input type="text" name="search" class="bar" id="searchbar" placeholder="Recherche..." value=""><!--Barre de Recherche-->
+                    </div>
+                </h1>
+            </div>
+            <div class="localisation" id="search-results" style="height: 80%;"></div>
+        </div>
+	</div>
+</body>
+<!-- Déclaration fichier Javascript -->
+<script type="text/javascript" src="asset/js/main.js"></script>
+<script type="text/javascript" src="asset/js/rechercheMenu.js"></script>
+<script type="text/javascript" src="asset/js/rechercheVilles.js"></script>
+<script type="text/javascript" src="asset/js/setVille.js"></script>
+<script type="text/javascript" src="asset/js/setHTML.js"></script>
+<!--<script type="text/javascript" src="asset/js/changeData.js"></script>-->
+</html> 

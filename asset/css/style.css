@@ -1,0 +1,312 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+/*Page centrale*/
+.carte {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	min-height: 400px;
+}
+
+/*Carte d'accueil*/
+.carte .front {
+	width: 100%;
+	height: 100%;
+	background: #7f82a7;
+	padding: 30px;
+	box-sizing: border-box;
+	transform-origin: right;
+	transition: .5s;
+}
+
+/*Texte en haut à gauche*/
+.localisation {
+	width: 85%;
+	text-align: left;
+	float: left;
+	font-weight: bold;
+	color: #fff;
+}
+
+/*Prévisions supplémentaires*/
+.more {
+	width: 15%;
+	text-align: right;
+	float: right;
+	font-size: 24px;
+	color: #fff;
+	display: block;
+}
+
+/*Curseur*/
+.take {
+	cursor: pointer;
+}
+
+/*METHEO*/
+.title {
+	position: absolute;
+	width: 100%;
+	top: 4%;
+	font-size: 72px;
+	color: #7f82a7;
+	transition: ease .5s; 
+}
+
+.title h1 {
+	position: relative;
+	text-align: center;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	font-size: 30px;
+	margin: 0;
+}
+
+/*texte en dessous*/
+.title .bottom {
+	position: relative;
+	text-align: center;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 10px;
+	margin: 0;
+}
+
+.front .weather {/*page d'accueil*/
+	padding: 30px 0 20px;
+	text-align: center;
+}
+
+.back1 .weather { /*page de droite*/
+	position: relative;
+	padding: 30px 0 20px;
+	text-align: center;
+}
+
+.back2 .weather { /*page de gauche*/
+	position: relative;
+	padding: 30px 0 20px;
+	text-align: center;
+}
+
+/*Images*/
+.weather .condition {
+	font-size: 80px;
+}
+
+.conditions {
+	width: 80px;
+	height: 80px;
+}
+
+/*Petites images*/
+.lilconditions {
+	width: 20px;
+	height: 20px;
+}
+
+/*Temperature*/
+.weather h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 46px;
+	color: #fff;
+	line-height: 26px;
+}
+
+/*Heure*/
+.weather h1 .ajd {
+	font-size: 15px;
+}
+
+/*Condition écrite*/
+.weather h1 .inter {
+	font-size: 17px;
+}
+
+/*PARTIE INFERIEURE DES PAGES*/
+.sup {
+	margin: 0;
+	padding: 0;
+}
+
+.sup li {
+	padding: 10px 0;
+	border-bottom: 2px solid #fff;
+	display: flex;
+	font-weight: bold;
+	color: #fff;
+}
+
+.front .sup li {
+	cursor: pointer;
+}
+
+.sup li:last-child {
+	border-bottom: none;
+}
+
+.sup li .jour {
+	padding: 0 0 0 10px;
+	width: 50%;
+}
+
+.sup li .tempday {
+	width: 50%;
+	text-align: right;
+}
+
+/*CARTE DROITE*/
+.carte .back1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #8ca1bf /*#8db5ed*/;
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	transform-origin: left; 
+	transition: .5s;
+}
+
+.unactive {
+	transform: translateX(100%) rotateY(90deg);
+}
+
+.active {
+	transform: translateX(0) rotateY(0deg);
+}
+
+/*CARTE GAUCHE*/
+.carte .back2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #9d84b3 /*#8db5ed*/;
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	transform-origin: right; 
+	transition: .5s;
+}
+
+.unactive2 {
+	transform: translateX(-100%) rotateY(-90deg);
+}
+
+.active2 {
+	transform: translateX(0) rotateY(0deg);
+}
+
+/*CARTE DE RECHERCHE*/
+.carte .search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #8a8ebf; /*#8db5ed*/;
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	transform-origin: bottom; 
+	transition: .5s;
+}
+
+.unactive3 {
+	transform: translateY(-100%) rotateX(-90deg);
+}
+
+.active3 {
+	transform: translateY(0) rotateX(0deg);
+}
+
+.unactivefront {
+}
+
+.unactivefront {
+	filter: blur(300px);
+}
+
+/*PARTIE SUPERIEURE DE LA CARTE*/
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.go-back {
+	font-size: 24px;
+	color: #fff;
+	text-align: right;
+}
+
+.go-back .fa {
+	cursor: pointer;
+}
+
+/*Temperature minimale et maximale*/
+.sun {
+	width: 100%;
+	text-align: center;
+
+}
+
+/*FLECHE DES CHANGEMENTS D'HEURE*/
+.change {
+	font-size: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+.recherche {
+	float: right;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+/*BARRE DE RECHERCHE*/
+.bar {
+    position: absolute;
+    transform-origin: right;
+    background-color: rgba(150, 150, 150, 0);
+    transition: linear .3s;
+    color: white;
+    font-size: 17px;
+    width: 80%;
+    border: none;
+    border-bottom: solid 2px white;
+}
+
+/*AFFICHAGE RESULTATS DE RECHERCHE*/
+#search-results {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+}
+
+#search-results div {
+	display: flex;
+	width: 100%;
+	height: 20%;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: solid 2px white;
+	cursor: pointer;
+}
+
+#search-results div:last-child {
+	border: none;
+}
